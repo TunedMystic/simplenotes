@@ -1,0 +1,40 @@
+{{define "index"}}
+    {{template "header" .}}
+
+    <nav>
+        <a href="/note/new">New Note</a>
+    </nav>
+
+    <div class="leading-relaxed">
+        {{range .}}
+            <div class="flex flex-col">
+                <div class="flex">
+
+                    <!-- Date -->
+                    <div class="flex flex-col" style="width: 30%;">
+                        <span>{{.DisplayDate}}</span>
+                        <span class="text-sm text-gray-400">{{.DisplayTime}}</span>
+                    </div>
+                    
+                    <!-- Body -->
+                    <div style="width: 70%;">
+                        <p style="display: flex; flex-direction: column; margin: 0;">
+                            <a class="no-style" href="/note/{{.ID}}/change">
+                                <span>{{.Body}}</span>
+                            </a>
+                            <span class="text-gray-400">
+                                {{range .Tags}}
+                                    <span style="padding: 2px 5px;" class="text-sm rounded-full bg-gray-100 text-600">{{.Name}}</span>
+                                {{end}}
+                            </span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <br />
+        {{end}}
+    </div>
+
+    {{template "footer" .}}
+{{end}}

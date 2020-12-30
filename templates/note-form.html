@@ -1,0 +1,39 @@
+{{define "note-form"}}
+    {{template "header" .}}
+
+    <!-- Form errors -->
+    {{if .Form.Errors}}
+        <ul class="errors">
+            {{range .Form.Errors}}
+                <li class="text-red-500">{{.}}</li>
+            {{end}}
+        </ul>
+    {{end}}
+
+    <!-- Note Form -->
+    <form class="w-full flex flex-col" action="{{.URL}}" method="POST">
+        <p class="flex justify-between">
+            <input class="w-almost-1/2" type="text" name="date" placeholder="Date" value="{{.Form.Date}}">
+            <input class="w-almost-1/2" type="text" name="time" placeholder="Time" value="{{.Form.Time}}">
+        </p>
+
+        <p><textarea class="w-full" name="body" rows="8" placeholder="Body">{{.Form.Body}}</textarea></p>
+
+        <p><input class="w-full" type="text" name="tags" placeholder="Tags" value="{{.Form.Tags}}"></p>
+
+        <p class="flex">
+            <a class="gray-button mr-2" href="/">Cancel</a>
+            <button type="submit">Save</button>
+        </p>
+    </form>
+
+
+    <!-- Delete Note button -->
+    {{if eq .Action "update"}}
+        <form action="/note/{{.NoteID}}/delete" method="POST">
+            <button class="bg-red-500 hover:bg-red-600" type="submit">Delete</button>
+        </form>
+    {{end}}
+
+    {{template "footer" .}}
+{{end}}

@@ -1,0 +1,105 @@
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.w-1\/2 {
+    width: 50;
+}
+
+.w-almost-1\/2 {
+    width: 48%;
+}
+
+.text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.leading-relaxed {
+    line-height: 1.625;
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+.text-gray-300 {
+    color: #D1D5DB;
+}
+
+.text-gray-400 {
+    color: #9CA3AF;
+}
+
+.text-gray-600 {
+    color: #4B5563;
+}
+
+.text-red-500 {
+    color: #EF4444;
+}
+
+.bg-gray-100 {
+    background-color: #F3F4F6;
+}
+
+.bg-red-500 {
+    background-color: #EF4444;
+}
+
+.hover\:bg-red-600:hover {
+    background-color: #DC2626;
+}
+
+.text-gray-800 {
+    color: #1a1a1a;
+}
+
+.bg-gray-100 {
+    background-color: #F3F4F6;
+}
+
+.mr-2 {
+    margin-right: 0.5rem;
+}
+
+ul.errors {
+    list-style: none;
+    padding: 0;
+}
+
+
+.gray-button {
+    color: #1a1a1a;
+    background-color: #F3F4F6;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.gray-button:hover {
+    color: #1a1a1a;
+    background-color: #E5E7EB;
+    text-decoration: none;
+}
+
+a.no-style {
+    text-decoration: none;
+    color: inherit;
+}
+
+textarea {
+    font-family: Inter, -apple-system, system-ui;
+}

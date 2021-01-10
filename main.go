@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
+	"github.com/tunedmystic/authsolo"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -91,6 +92,10 @@ func (s *Server) Routes() http.Handler {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 
+	// Add authentication middleware to all routes.
+	auth := authsolo.New("super-secret")
+	r.Use(auth.SoloH)
+
 	r.Get("/", s.HandleIndex)
 	r.Get("/static/*", s.HandleStatic)
 	r.Get("/note/new", s.HandleNoteCreateForm)             // note create form
@@ -99,7 +104,7 @@ func (s *Server) Routes() http.Handler {
 	r.Post("/note/{noteID}/change", s.HandleNoteUpdate)    // note update action
 	r.Post("/note/{noteID}/delete", s.HandleNoteDelete)    // note delete action
 
-	return r
+	return auth.Handler(r)
 }
 
 // HandleIndex serves the home page.
